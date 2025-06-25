@@ -1,0 +1,215 @@
+   <nav>
+         <ul>
+             <li><a href="#projects">Projects</a></li>
+             <li><a href="#skills">Skills</a></li>
+             <li><a href="#contact">Contact</a></li>
+         </ul>
+     </nav>
+     <section id="projects">
+         <h2>Projects</h2>
+         <p>Coming soon...</p>
+     </section>
+   </body>
+  <!-- React & ReactDOM (latest versions) -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel Standalone (latest version) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Main application script -->
+    <script type="text/babel" data-presets="react"></script>
+    <script>
+        
+// components/Layout.jsx
+import Navbar from './Navbar';
+import { Footer } from './Footer';
+
+export default function Layout({ children }) {
+  return (
+    <>
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+}
+
+
+// Removed named export for Layout to avoid multiple default exports
+
+
+// components/Navbar.jsx
+import Link from 'next/link';
+
+export default function Navbar() {
+  return (
+    <nav>
+      <h1>My Portfolio</h1>
+      <ul>
+        <li><Link href="/">Home</Link></li>
+        <li><Link href="/projects">Projects</Link></li>
+        <li><Link href="/contact">Contact</Link></li>
+      </ul>
+    </nav>
+  );
+}
+
+
+
+
+
+
+
+// components/Footer.jsx
+
+export function Footer() {
+  return (
+    <footer>
+      <p>© {new Date().getFullYear()} My Portfolio</p>
+    </footer>
+  );
+}
+
+  
+  
+// pages/index.js
+import Link from 'next/link';  
+
+import Image from 'next/image';
+
+export default function Home() {
+  return (
+    <div>
+      <h2>Hello, I'm Elijah Njenga</h2>
+      <p>I'm a software developer specialized in front and backend languages.</p>
+      <Image src="/profile.jpg" alt="Profile" width={200} height={200} style={{ borderRadius: '50%' }} />
+    </div>
+  );
+}
+
+//pages/projects.js
+import projects from '';
+
+const projects = [
+  {
+    id: 1,
+    title: 'Todo App',
+    description: 'A simple Todo List App built with React and Next.js',
+    link: 'https://github.com/Favieelijah/portfolio/todo-app',
+  },
+  {
+    id: 2,
+    title: 'Blog Platform',
+    description: 'A blog platform using Next.js and Markdown',
+    link: 'https://github.com/Favieelijah/portfolio/blog-platform',
+  },
+];
+
+export function Projects() {
+  return (
+    <div>
+      <h2>Projects</h2>
+      {projects.map(({ id, title, description, link }) => (
+        <div key={id}>
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <a href={link} target="_blank" rel="noopener noreferrer">View Project</a>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+  
+
+export function Contact() {
+    return (
+      <div>
+        <h2>Contact Me</h2>
+        <p>If you'd like to get in touch, email me at:</p>
+        <a href="mailto:yoroichishin258@yahoo.com">yoroichishin258@yahoo.com</a>
+      </div>
+    );
+  }
+
+  // pages/_app.js
+import '../styles/globals.css';
+import Layout from '../components/Layout';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
+}
+
+export { MyApp };
+
+if (typeof window !== 'undefined') {
+  let Contact = document.getElementById('Contact');
+  if (Contact) {
+    Contact.addEventListener('click', function () {
+      const newPageContent = document.createElement('div');
+      newPageContent.innerHTML = `
+        <div>
+          <h2>Contact Me</h2>
+          <p>If you'd like to get in touch, email me at:</p>
+          <a href="mailto:yoroichishin258@yahoo.com">yoroichishin258@yahoo.com</a>
+        </div>
+      `;
+      document.body.innerHTML = ''; // Clear the current page content
+      document.body.appendChild(newPageContent); // Add the new content
+    });
+  }
+}
+  
+if (typeof window !== 'undefined') {
+  let Skills = document.getElementById('Skills');
+  if (Skills) {
+    Skills.addEventListener('click', function () {
+      const newPageContent = document.createElement('div');
+      newPageContent.innerHTML = `
+        <div>
+          <h2>Skills</h2>
+          <p>JavaScript, React, Next.js, Node.js, Express, MongoDB</p>
+        </div>
+      `;
+      document.body.innerHTML = ''; // Clear the current page content
+      document.body.appendChild(newPageContent); // Add the new content
+    });
+  }
+}
+// pages/index.js
+import Home from '../components/Home';
+import Projects from '../components/Projects';
+
+
+//pages/skills.js
+import { Skills } from '../components/Skills';
+export default function Skills() {
+  return (
+    <div>
+      <h2>Skills</h2>
+      <p>JavaScript, React, Next.js, Node.js, Express, MongoDB</p>
+    </div>
+  );
+}
+
+
+  document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default jump
+      const targetId = this.getAttribute('href');
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+
+    </script>
