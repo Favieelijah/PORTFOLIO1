@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <link rel="stylesheet" href="port.css">
+    <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>SKILLS</title>
+    
+ </head>
+   <body>
+    <p>WELCOME SKILLS CHART</p><br>
+    <p>I am WEB DEVELOPER with skills from frontend and backend, my skills in html, css, js and jsx are good for a programmer my own age. Am good at creating interactive and friendly websites for users.
+
+    </p>
+     <canvas id="myChart" style="width:100%;max-width:700px"></canvas> 
+    <style>
+    
+    </style>
+    <script
+   >
+   const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+      type: 'bar', // Change to 'line', 'pie', 'doughnut', etc. as needed
+      data: {
+        labels: ['html', 'css', 'js', 'react', 'c#', 'c++'],
+        datasets: [{
+          label: 'languages',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(153, 102, 255, 0.5)',
+            'rgba(255, 159, 64, 0.5)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+    </script>
+
+   </body>
+</html>
